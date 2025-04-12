@@ -1,0 +1,59 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Design.PreviewWith>
+    <Border Padding="20">
+      <!-- Add Controls for Previewer Here -->
+    </Border>
+  </Design.PreviewWith>
+
+  <!-- Add Styles Here -->
+	<Style Selector="Button.ExitButton">
+		<Setter Property="Background" Value="Transparent"></Setter>
+		<Setter Property="Margin" Value="0,15"></Setter>
+		<Setter Property="BorderThickness" Value="0"></Setter>
+		<Setter Property="FontWeight" Value="Regular"></Setter>
+		<Setter Property="Foreground" Value="{StaticResource ResourceKey=ItemTextColor}"></Setter>
+	</Style>
+
+	<Style Selector="Button.ExitButton:pointerover /template/ContentPresenter#PART_ContentPresenter">
+		<Setter Property="Background" Value="Transparent"></Setter>
+		<Setter Property="TextBlock.Foreground" Value="{StaticResource ResourceKey=ItemTextColor}"></Setter>
+	</Style>
+
+	<Style Selector="Rectangle.Line">
+		<Setter Property="Margin" Value="10,10"></Setter>
+		<Setter Property="Stroke" Value="{StaticResource ResourceKey=ItemTextColor}"></Setter>
+		<Setter Property="StrokeThickness" Value="0.7"></Setter>
+		<Setter Property="StrokeDashArray" Value="4,4"></Setter>
+		<Setter Property="Height" Value="0.5"></Setter>
+	</Style>
+	
+	<Style Selector="TextBlock.MenuTextBlock">
+		<Setter Property="FontWeight" Value="Regular"></Setter>
+		<Setter Property="Foreground" Value="{StaticResource ResourceKey=ItemTextColor}"></Setter>
+		<Setter Property="FontSize" Value="12"></Setter>
+		<Setter Property="Margin" Value="0,20"></Setter>
+	</Style>
+
+	<Style Selector="ListBox.MenuListBox">
+		<Setter Property="Background" Value="Transparent"></Setter>
+		<Setter Property="Padding" Value="0,0"></Setter>
+		<Setter Property="BorderThickness" Value="0"></Setter>
+	</Style>
+
+	<Style Selector="ListBox.MenuListBox > ListBoxItem /template/ ContentPresenter#PART_ContentPresenter">
+		<Setter Property="TextBlock.Foreground" Value="{StaticResource ItemTextColor}"/>
+		<Setter Property="TextBlock.FontSize" Value="14"/>
+		<Setter Property="TextBlock.FontWeight" Value="Regular"/>
+	</Style>
+
+	<Style Selector="ListBox.MenuListBox > ListBoxItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="TextBlock.Foreground" Value="{StaticResource ItemTextColor}"/>
+	</Style>
+
+	<Style Selector="ListBox.MenuListBox > ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="TextBlock.Foreground" Value="{StaticResource ItemTextColor}"/>
+	</Style>
+</Styles>

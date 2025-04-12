@@ -1,0 +1,76 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:FuneralCRM.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720"
+		MinWidth="1280"
+		MaxHeight="720"
+		xmlns:m="clr-namespace:FuneralCRM.Models"
+		xmlns:material="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+        xmlns:asyncImage="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
+        x:Class="FuneralCRM.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/logo.png"
+        Title="FuneralCRM">
+
+
+	<Design.DataContext>
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>
+
+	<Window.DataTemplates>
+		<DataTemplate x:DataType="m:MenuElement">
+			<StackPanel Orientation="Horizontal" Spacing="5">
+				<material:MaterialIcon Width="28" Height="28" Kind="{Binding Icon}"/>
+				<TextBlock VerticalAlignment="Center" Text="{Binding Title}"></TextBlock>
+			</StackPanel>
+		</DataTemplate>
+	</Window.DataTemplates>
+
+	<Grid Background="{StaticResource ResourceKey=BodyWindowColor}">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="200"></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<Border Grid.Column="0" CornerRadius="0,40,0,0" Background="#B59E7D" BoxShadow=" 0 4 4 4 #00000000">
+			<DockPanel>
+				<StackPanel DockPanel.Dock="Top" Height="50" Width="50" Margin="10,50" Orientation="Horizontal" HorizontalAlignment="Left">
+					<Image Source="/Assets/logo.png"></Image>
+					<TextBlock FontWeight="Bold" Foreground="Black" FontSize="20" FontFamily="Roboto" VerticalAlignment="Center"
+							   Margin="10,0,0,0" Classes="hide">Warehouse</TextBlock>
+				</StackPanel>
+				<TextBlock TextAlignment="Center" Classes="MenuTextBlock"
+						   DockPanel.Dock="Top" Text="Главное меню" FontFamily="Roboto" FontSize="20"/>
+				<Rectangle DockPanel.Dock="Top" Classes="Line">	</Rectangle>
+
+				<Button Name="ExitButton" Classes="ExitButton" HorizontalAlignment="Stretch"
+				HorizontalContentAlignment="Center" DockPanel.Dock="Bottom">
+					<StackPanel Spacing="5" Orientation="Horizontal">
+						<material:MaterialIcon Width="28" Height="28" Kind="ExitToApp"></material:MaterialIcon>
+						<TextBlock VerticalAlignment="Center" Text="Выйти"></TextBlock>
+					</StackPanel>
+				</Button>
+				<Rectangle DockPanel.Dock="Bottom" Classes="Line"></Rectangle>
+
+				<StackPanel DockPanel.Dock="Bottom" Spacing="5" Margin="10" Height="50"
+							Orientation="Horizontal" HorizontalAlignment="Left">
+					<Border ClipToBounds="True" Width="40" Height="40" CornerRadius="300">
+						<asyncImage:AdvancedImage Source="{Binding Account.Image}"></asyncImage:AdvancedImage>
+					</Border>
+					<StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Margin="3,0" Spacing="2" Orientation="Vertical">
+						<TextBlock FontSize="10" FontWeight="Bold" Foreground="Black">
+
+						</TextBlock>
+					</StackPanel>
+					<TextBlock FontWeight="Light" FontSize="10" Text="Бухгалтер"></TextBlock>
+				</StackPanel>
+				<ListBox SelectedItem="{Binding SelectedMenuElement, Mode=TwoWay}" Classes="MenuListBox"
+						 ItemsSource="{Binding MenuElements}" DockPanel.Dock="Top"/>
+				<TextBlock DockPanel.Dock="Top" Classes="MenuTextBlock" Text="Прочее"/>
+				<ListBox SelectedItem="{Binding SelectedMenuElement, Mode=TwoWay}"
+						 ItemsSource="{Binding OtherMenuElements}" Classes="MenuListBox" DockPanel.Dock="Bottom"/>
+			</DockPanel>
+		</Border>
+	</Grid>
+
+</Window>
